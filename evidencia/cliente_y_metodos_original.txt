@@ -1,0 +1,7 @@
+$ curl -v http://localhost:2001/../secreto.txt          # el cliente normaliza la ruta
+> GET /secreto.txt HTTP/1.1
+
+$ curl -v --path-as-is http://localhost:2001/../secreto.txt   # la ruta viaja tal cual
+> GET /../secreto.txt HTTP/1.1
+
+$ curl -i -X POST http://localhost:2001/index.html          # método distinto de GET

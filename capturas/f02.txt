@@ -1,0 +1,20 @@
+$ curl -i http://localhost:2001/
+HTTP/1.0 200 OK
+Server: CS241Serv v0.1
+Content-Type: text/html
+
+<html> <head> <title> Well Done ! </title> </head>
+<body> It looks like everything is working ! </body> </html>
+
+$ curl -i http://localhost:2001/noexiste.html
+HTTP/1.0 404 Not Found
+Server: CS241Serv v0.1
+Content-Type: text/html
+
+<html> <head> <title> 404 - Page Not Found </title> </head>
+<body> Woops couldn't find that page </body> </html>
+
+--- salida estándar del servidor ---
+Process 272 served a request of 183 bytes. Total bytes sent 183
+Process 274 served a request of 183 bytes. Total bytes sent 366
+Process 275 served a request of 190 bytes. Total bytes sent 556

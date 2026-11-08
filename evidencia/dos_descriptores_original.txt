@@ -1,0 +1,25 @@
+arrancó tras 21 intento(s)
+Procesos 'server' al inicio: 12
+Peticiones respondidas: 105   sin respuesta: 295   (primera sin respuesta: #106)
+Procesos 'server' vivos al final: 12
+  PID STAT %CPU CMD
+ 3579 Rs   99.3 ./server
+ 3581 Z     0.0 [server] <defunct>
+ 3582 Z     0.0 [server] <defunct>
+ 3583 Z     0.0 [server] <defunct>
+ 3584 Z     0.0 [server] <defunct>
+ 3585 Z     0.0 [server] <defunct>
+ 3586 Z     0.0 [server] <defunct>
+ 3587 Z     0.0 [server] <defunct>
+ 3588 Z     0.0 [server] <defunct>
+ 3589 Z     0.0 [server] <defunct>
+ 3590 Z     0.0 [server] <defunct>
+ 3591 Z     0.0 [server] <defunct>
+Petición legítima final:
+(fin)
+Error opening file in printFile()
+Error opening file in printFile()
+Error opening file in printFile()
+Error opening file in printFile()
+
+[exited with code 0]

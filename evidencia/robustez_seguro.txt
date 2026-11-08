@@ -1,0 +1,23 @@
+== Inundación con límite de 40 descriptores (misma prueba que derribó al original) ==
+Peticiones respondidas: 400   sin respuesta: 0
+Petición legítima final: HTTP/1.0 200 OK
+  PID USER     STAT %CPU CMD
+ 6962 nobody   Ss    0.0 ./server_seguro -p 2004 -r ../original/public_html
+ 6964 nobody   S     0.0 ./server_seguro -p 2004 -r ../original/public_html
+ 6965 nobody   S     0.0 ./server_seguro -p 2004 -r ../original/public_html
+ 6966 nobody   S     0.0 ./server_seguro -p 2004 -r ../original/public_html
+ 6967 nobody   S     0.0 ./server_seguro -p 2004 -r ../original/public_html
+ 6968 nobody   S     0.0 ./server_seguro -p 2004 -r ../original/public_html
+ 6969 nobody   S     0.0 ./server_seguro -p 2004 -r ../original/public_html
+ 6970 nobody   S     0.0 ./server_seguro -p 2004 -r ../original/public_html
+ 6971 nobody   S     0.0 ./server_seguro -p 2004 -r ../original/public_html
+ 6972 nobody   S     0.0 ./server_seguro -p 2004 -r ../original/public_html
+ 6973 nobody   S     0.0 ./server_seguro -p 2004 -r ../original/public_html
+
+== Reemplazo de un worker que muere ==
+workers antes: 10; se mata el worker 6964 con SIGKILL
+workers después: 10
+worker 6964 terminó (estado 9); se reemplaza
+
+== Clientes que no terminan la petición (12 conexiones mudas) ==
+Petición legítima con los 10 workers ocupados: HTTP/1.0 200 OK (respondida en 4.6 s; timeout de lectura = 5 s)

@@ -1,0 +1,9 @@
+AVISO: modo demostración -x, capa 3 desactivada (no usar en producción)
+Servidor seguro escuchando en 0.0.0.0:2003, raíz web /home/claude/lab2/original/public_html, 10 workers, uid 0
+[pid 5581] 403  "GET /../secreto.txt HTTP/1.1"  -> EXDEV: la resolución escaparía de la raíz  (254 bytes, total 254)
+[pid 5583] 403  "GET /../../../../../../etc/passwd HTTP/1.1"  -> EXDEV: la resolución escaparía de la raíz  (254 bytes, total 508)
+[pid 5582] 403  "GET /docs/../../secreto.txt HTTP/1.1"  -> EXDEV: la resolución escaparía de la raíz  (254 bytes, total 762)
+[pid 5584] 403  "GET /enlace_etc/passwd HTTP/1.1"  -> ELOOP: enlace simbólico rechazado  (254 bytes, total 1016)
+[pid 5585] 403  "GET /%2e%2e/secreto.txt HTTP/1.1"  -> EXDEV: la resolución escaparía de la raíz  (254 bytes, total 1270)
+[pid 5587] 200  "GET /index.html HTTP/1.1"  -> servido  (277 bytes, total 1547)
+Cerrando servidor...

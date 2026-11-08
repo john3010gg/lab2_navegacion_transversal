@@ -1,0 +1,4 @@
+== 11 conexiones que se abren y se cierran sin enviar nada — servidor SEGURO ==
+workers vivos antes:   10
+workers vivos después: 10
+Petición legítima: HTTP/1.0 200 OK

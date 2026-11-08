@@ -1,0 +1,12 @@
+$ # Abrir y cerrar 11 conexiones sin enviar nada
+workers vivos antes:   11
+workers vivos después: 0
+Petición legítima: 
+(sin respuesta = servidor caído)
+
+--- strace de un worker ---
+9097  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9097, si_uid=0} ---
+9097  +++ killed by SIGPIPE +++
+
+$ # 12 clientes que conectan y no terminan la petición
+Petición legítima con los 11 workers ocupados: (sin respuesta) tras 20 s de espera

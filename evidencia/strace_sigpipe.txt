@@ -1,0 +1,44 @@
+9097  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9097  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9097  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9097, si_uid=0} ---
+9097  +++ killed by SIGPIPE +++
+9096  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9096  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9096  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9096, si_uid=0} ---
+9096  +++ killed by SIGPIPE +++
+9104  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9104  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9104  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9104, si_uid=0} ---
+9104  +++ killed by SIGPIPE +++
+9094  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9094  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9094  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9094, si_uid=0} ---
+9094  +++ killed by SIGPIPE +++
+9095  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9095  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9095  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9095, si_uid=0} ---
+9095  +++ killed by SIGPIPE +++
+9103  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9103  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9103  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9103, si_uid=0} ---
+9103  +++ killed by SIGPIPE +++
+9102  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9102  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9102  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9102, si_uid=0} ---
+9102  +++ killed by SIGPIPE +++
+9101  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9101  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9101  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9101, si_uid=0} ---
+9101  +++ killed by SIGPIPE +++
+9100  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9100  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9100  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9100, si_uid=0} ---
+9100  +++ killed by SIGPIPE +++
+9099  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9099  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9099  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9099, si_uid=0} ---
+9099  +++ killed by SIGPIPE +++
+9098  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9098  openat(AT_FDCWD, "public_html", O_RDONLY) = 6
+9098  --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=9098, si_uid=0} ---
+9098  +++ killed by SIGPIPE +++

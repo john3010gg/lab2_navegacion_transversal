@@ -1,0 +1,8 @@
+$ strace -f -e trace=openat -p <los 11 workers> &
+$ printf 'GET /../../../../../../etc/passwd HTTP/1.1\r\nHost: x\r\n\r\n' | nc localhost 2001
+HTTP/1.0 400 Bad Request
+
+--- strace: lo que el worker hizo realmente ---
+278   openat(AT_FDCWD, "public_html/../../../../../../etc/passwd", O_RDONLY) = 8
+278   openat(AT_FDCWD, "400.html", O_RDONLY) = 9
+      (no hay close(8) ni close(9): ambos descriptores quedan abiertos)

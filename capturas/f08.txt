@@ -1,0 +1,11 @@
+$ gcc -std=gnu11 -O2 -Wall -Wextra -pthread server_seguro.c -o server_seguro
+$                                   # 0 advertencias (el original: 8 con -Wall -Wextra)
+$ ./server_seguro -r ../original/public_html &     # ejecutado como root
+Servidor seguro escuchando en 0.0.0.0:2001, raíz web .../original/public_html (chroot), 10 workers, uid 65534
+$ ps -o pid,ppid,user,stat,%cpu,cmd -C server_seguro
+  PID  PPID USER     STAT %CPU CMD
+ 5262     1 nobody   Ss    0.0 ./server_seguro -r ../original/public_html
+ 5264  5262 nobody   S     0.0 ./server_seguro -r ../original/public_html
+ 5265  5262 nobody   S     0.0 ./server_seguro -r ../original/public_html
+  ...   (10 workers, todos como nobody, encerrados en la raíz web)
+ 5273  5262 nobody   S     0.0 ./server_seguro -r ../original/public_html

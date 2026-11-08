@@ -1,0 +1,21 @@
+== Descriptores (suma de los 10 workers) ==
+antes: 50
+tras 300 '/../secreto.txt': 50
+tras 300 'GET /':           50
+
+== Inundación con límite de 40 descriptores (misma prueba que derribó al original) ==
+Peticiones respondidas: 400   sin respuesta: 0
+Petición legítima final: HTTP/1.0 200 OK
+
+== Reemplazo de un worker que muere ==
+workers antes: 10; se mata el worker 6964 con SIGKILL
+workers después: 10
+worker 6964 terminó (estado 9); se reemplaza
+
+== Clientes que no terminan la petición (12 conexiones mudas) ==
+Petición legítima con los 10 workers ocupados: HTTP/1.0 200 OK (respondida en 4.6 s; timeout de lectura = 5 s)
+
+== 11 conexiones que se abren y se cierran sin enviar nada — servidor SEGURO ==
+workers vivos antes:   10
+workers vivos después: 10
+Petición legítima: HTTP/1.0 200 OK

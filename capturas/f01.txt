@@ -1,0 +1,18 @@
+$ git clone https://github.com/AaronKalair/C-Web-Server.git && cd C-Web-Server
+$ git log -1 --format='%h %ad %an'
+3ca1a22 Tue Jun 26 15:03:51 2012 +0100 Aaron Kalair
+$ make
+gcc server.c -lrt -o server
+server.c: In function 'recordTotalBytes':
+server.c:306:5: warning: implicit declaration of function 'pthread_mutex_lock'
+server.c:310:5: warning: implicit declaration of function 'pthread_mutex_unlock'
+server.c: In function 'main':
+server.c:380:5: warning: implicit declaration of function 'pthread_mutex_init'
+$ ./server &
+$ ps -o pid,ppid,stat,%cpu,cmd -C server
+  PID  PPID STAT %CPU CMD
+  270     1 Rs   99.0 ./server        <- proceso padre en bucle activo
+  272   270 S     0.0 ./server
+  273   270 S     0.0 ./server
+  ...   (11 procesos hijo en total: children <= 10 crea 11)
+  282   270 S     0.0 ./server

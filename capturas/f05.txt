@@ -1,0 +1,20 @@
+$ # Descriptores abiertos sumando los 11 workers
+antes de las pruebas:                         76
+tras 300 peticiones '/../secreto.txt' (400):  676
+tras 300 peticiones legítimas 'GET /':        1276    <- 2 descriptores perdidos por petición
+
+$ ulimit -n 40 && ./server &      # límite bajo para acelerar el efecto
+$ for i in $(seq 1 400); do printf 'GET /../secreto.txt ...' | nc -w 1 localhost 2001; done
+Peticiones respondidas: 105   sin respuesta: 295   (primera sin respuesta: #106)
+$ ps -o pid,stat,%cpu,cmd -C server
+  PID STAT %CPU CMD
+ 3579 Rs   99.3 ./server
+ 3581 Z     0.0 [server] <defunct>
+ 3582 Z     0.0 [server] <defunct>
+  ...   (los 11 workers muertos y no se reemplazan)
+ 3591 Z     0.0 [server] <defunct>
+$ printf 'GET /index.html ...' | nc -w 2 localhost 2001
+(sin respuesta)
+--- salida de error del servidor ---
+Error opening file in printFile()
+Error opening file in printFile()

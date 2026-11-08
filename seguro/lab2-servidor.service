@@ -1,0 +1,22 @@
+# /etc/systemd/system/lab2-servidor.service
+# Mantiene el servidor seguro en línea para la evaluación.
+# Ajuste las rutas; el servicio arranca como root para que el programa
+# haga chroot() a la raíz web y pase al usuario nobody por sí mismo.
+[Unit]
+Description=Laboratorio 2 USB - Servidor web simple reforzado
+After=network.target
+
+[Service]
+ExecStart=/opt/lab2/server_seguro -p 8080 -r /opt/lab2/public_html
+Restart=on-failure
+# Endurecimiento adicional de systemd (defensa en profundidad)
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadOnlyPaths=/opt/lab2
+CapabilityBoundingSet=CAP_SYS_CHROOT CAP_SETUID CAP_SETGID
+LimitNOFILE=1024
+
+[Install]
+WantedBy=multi-user.target

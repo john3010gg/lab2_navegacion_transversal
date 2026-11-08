@@ -1,0 +1,4 @@
+278   openat(AT_FDCWD, "public_html/../../../../../../etc/passwd", O_RDONLY) = 8
+278   openat(AT_FDCWD, "400.html", O_RDONLY) = 9
+278   --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=278, si_uid=0} ---
+278   +++ killed by SIGPIPE +++

@@ -1,0 +1,21 @@
+$ cat bitacora_seguro.txt
+Servidor seguro escuchando en 0.0.0.0:2001, raíz web .../original/public_html (chroot), 10 workers, uid 65534
+[pid 5264] 200  "GET / HTTP/1.1"  -> servido
+[pid 5265] 200  "GET /index.html HTTP/1.1"  -> servido
+[pid 5266] 200  "GET /docs/manual.html HTTP/1.1"  -> servido
+[pid 5267] 404  "GET /noexiste.html HTTP/1.1"  -> no existe
+[pid 5268] 403  "GET /../secreto.txt HTTP/1.1"  -> segmento '..' u oculto rechazado
+[pid 5269] 403  "GET /../../../../../../etc/passwd HTTP/1.1"  -> segmento '..' u oculto rechazado
+[pid 5270] 403  "GET /./docs/./../../secreto.txt HTTP/1.1"  -> segmento '..' u oculto rechazado
+[pid 5272] 403  "GET /%2e%2e/secreto.txt HTTP/1.1"  -> segmento '..' u oculto rechazado
+[pid 5271] 403  "GET /.%2e/secreto.txt HTTP/1.1"  -> segmento '..' u oculto rechazado
+[pid 5273] 404  "GET /%252e%252e/secreto.txt HTTP/1.1"  -> no existe
+[pid 5264] 403  "GET /..%2fsecreto.txt HTTP/1.1"  -> segmento '..' u oculto rechazado
+[pid 5265] 400  "GET /..\secreto.txt HTTP/1.1"  -> codificación inválida o byte prohibido
+[pid 5266] 404  "GET //etc/passwd HTTP/1.1"  -> no existe
+[pid 5267] 400  "GET /index.html%00.txt HTTP/1.1"  -> codificación inválida o byte prohibido
+[pid 5268] 400  "GET .bak/credenciales.txt HTTP/1.1"  -> la ruta no empieza por '/'
+[pid 5269] 403  "GET /enlace_etc/passwd HTTP/1.1"  -> ELOOP: enlace simbólico rechazado
+[pid 5270] 200  "GET /notas..v2.html HTTP/1.1"  -> servido
+[pid 5272] 200  "GET /index.html?x=1 HTTP/1.1"  -> servido
+[pid 5271] 403  "GET /docs HTTP/1.1"  -> directorio sin index.html (sin listados)

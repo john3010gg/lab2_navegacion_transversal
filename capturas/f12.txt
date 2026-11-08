@@ -1,0 +1,10 @@
+$ strace -f -e trace=openat,openat2 -p <workers> &
+$ printf "GET /../../../../../../etc/passwd HTTP/1.1\r\n\r\n" | nc localhost 2001
+HTTP/1.0 403 Forbidden
+llamadas de apertura registradas por strace: 0
+
+$ printf "GET /docs/manual.html HTTP/1.1\r\n\r\n" | nc localhost 2001
+HTTP/1.0 200 OK
+5271  openat2(3, "docs/manual.html",
+        {flags=O_RDONLY|O_NOCTTY|O_NONBLOCK|O_CLOEXEC,
+         resolve=RESOLVE_NO_MAGICLINKS|RESOLVE_NO_SYMLINKS|RESOLVE_BENEATH}, 24) = 6

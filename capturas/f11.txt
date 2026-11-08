@@ -1,0 +1,10 @@
+$ ./server_seguro -p 2003 -n -x -r ../original/public_html &   # sin capa 3 y sin chroot
+$ for r in ...; do printf "GET $r HTTP/1.1\r\n\r\n" | nc localhost 2003; done
+AVISO: modo demostración -x, capa 3 desactivada (no usar en producción)
+Servidor seguro escuchando en 0.0.0.0:2003, raíz web .../original/public_html, 10 workers, uid 0
+[pid 5581] 403  "GET /../secreto.txt HTTP/1.1"  -> EXDEV: la resolución escaparía de la raíz
+[pid 5583] 403  "GET /../../../../../../etc/passwd HTTP/1.1"  -> EXDEV: la resolución escaparía de la raíz
+[pid 5582] 403  "GET /docs/../../secreto.txt HTTP/1.1"  -> EXDEV: la resolución escaparía de la raíz
+[pid 5584] 403  "GET /enlace_etc/passwd HTTP/1.1"  -> ELOOP: enlace simbólico rechazado
+[pid 5585] 403  "GET /%2e%2e/secreto.txt HTTP/1.1"  -> EXDEV: la resolución escaparía de la raíz
+[pid 5587] 200  "GET /index.html HTTP/1.1"  -> servido

@@ -1,0 +1,5 @@
+== 11 conexiones que se abren y se cierran sin enviar nada — servidor ORIGINAL ==
+workers vivos antes:   11
+workers vivos después: 0
+Petición legítima: 
+(sin respuesta = servidor caído)

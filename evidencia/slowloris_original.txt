@@ -1,0 +1,2 @@
+== Clientes que no terminan la petición (12 conexiones mudas) — servidor ORIGINAL ==
+Petición legítima con los 11 workers ocupados: (sin respuesta) tras 20 s de espera

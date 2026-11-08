@@ -1,0 +1,4 @@
+== Descriptores (suma de los 10 workers) ==
+antes: 50
+tras 300 '/../secreto.txt': 50
+tras 300 'GET /':           50

@@ -1,0 +1,22 @@
+Servidor: localhost:2001    Fecha: 2026-11-07 17:39:54
+ID   Prueba                               Ruta enviada                    Código Contenido devuelto
+----------------------------------------------------------------------------------------------------------------------
+P01  Raíz (petición legítima)             /                               200    Well Done
+P02  Archivo legítimo                     /index.html                     200    Well Done
+P03  Archivo en subdirectorio             /docs/manual.html               200    documento legitimo
+P04  Archivo inexistente                  /noexiste.html                  404    Not Found
+P05  Recorrido ../ un nivel               /../secreto.txt                 400    400 Bad Request
+P06  Recorrido ../ hasta /etc/passwd      /../../../../../../etc/passwd   400    400 Bad Request
+P07  ../ disfrazado con ./ y //           /./docs/./../../secreto.txt     400    400 Bad Request
+P08  Codificación %2e%2e                  /%2e%2e/secreto.txt             404    Not Found
+P09  Codificación mixta .%2e              /.%2e/secreto.txt               404    Not Found
+P10  Doble codificación %252e             /%252e%252e/secreto.txt         404    Not Found
+P11  Barra codificada ..%2f               /..%2fsecreto.txt               400    400 Bad Request
+P12  Barra invertida ..\                  /..\secreto.txt                 400    400 Bad Request
+P13  Ruta absoluta //etc/passwd           //etc/passwd                    404    Not Found
+P14  Byte nulo %00                        /index.html%00.txt              404    Not Found
+P15  Prefijo hermano (sin /inicial)       .bak/credenciales.txt           200    RESPALDO: usuario=admin clave=respaldo123
+P16  Enlace simbólico dentro de la raíz   /enlace_etc/passwd              200    root:x:0:0:root:/root:/bin/bash
+P17  Nombre legítimo que contiene ..      /notas..v2.html                 400    400 Bad Request
+P18  Cadena de consulta ?x=1              /index.html?x=1                 404    Not Found
+P19  Directorio sin barra final           /docs                           200    (cuerpo vacío)
