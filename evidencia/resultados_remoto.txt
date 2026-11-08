@@ -1,0 +1,47 @@
+# Verificación remota a través del túnel bore (Internet -> bore.pub:28080 -> WSL2 localhost:8080)
+# Nota: P01, P02 y P18 muestran "(cuerpo vacío)" en lugar de "Well Done" porque el index.html publicado es
+# "<h1>Laboratorio 2 - Servidor reforzado</h1>"; los códigos de estado coinciden con resultados_despues.txt.
+## ./pruebas.sh bore.pub 28080
+Servidor: bore.pub:28080    Fecha: 2026-11-07 21:28:14
+ID   Prueba                               Ruta enviada                    Código Contenido devuelto
+----------------------------------------------------------------------------------------------------------------------
+P01  Raíz (petición legítima)             /                               200    (cuerpo vacío)
+P02  Archivo legítimo                     /index.html                     200    (cuerpo vacío)
+P03  Archivo en subdirectorio             /docs/manual.html               200    documento legitimo
+P04  Archivo inexistente                  /noexiste.html                  404    Not Found
+P05  Recorrido ../ un nivel               /../secreto.txt                 403    Forbidden
+P06  Recorrido ../ hasta /etc/passwd      /../../../../../../etc/passwd   403    Forbidden
+P07  ../ disfrazado con ./ y //           /./docs/./../../secreto.txt     403    Forbidden
+P08  Codificación %2e%2e                  /%2e%2e/secreto.txt             403    Forbidden
+P09  Codificación mixta .%2e              /.%2e/secreto.txt               403    Forbidden
+P10  Doble codificación %252e             /%252e%252e/secreto.txt         404    Not Found
+P11  Barra codificada ..%2f               /..%2fsecreto.txt               403    Forbidden
+P12  Barra invertida ..\                  /..\secreto.txt                 400    400 Bad Request
+P13  Ruta absoluta //etc/passwd           //etc/passwd                    404    Not Found
+P14  Byte nulo %00                        /index.html%00.txt              400    400 Bad Request
+P15  Prefijo hermano (sin /inicial)       .bak/credenciales.txt           400    400 Bad Request
+P16  Enlace simbólico dentro de la raíz   /enlace_etc/passwd              403    Forbidden
+P17  Nombre legítimo que contiene ..      /notas..v2.html                 200    version 2
+P18  Cadena de consulta ?x=1              /index.html?x=1                 200    (cuerpo vacío)
+P19  Directorio sin barra final           /docs                           403    Forbidden
+
+## curl -i --path-as-is http://bore.pub:28080/../secreto.txt
+HTTP/1.0 403 Forbidden
+Server: CS241Serv-seguro
+Content-Type: text/html; charset=utf-8
+Content-Length: 90
+X-Content-Type-Options: nosniff
+Connection: close
+
+<html><head><title>403 Forbidden</title></head><body><h1>403 Forbidden</h1></body></html>
+
+
+## curl -i http://bore.pub:28080/  (petición legítima)
+HTTP/1.0 200 OK
+Server: CS241Serv-seguro
+Content-Type: text/html; charset=utf-8
+Content-Length: 44
+X-Content-Type-Options: nosniff
+Connection: close
+
+<h1>Laboratorio 2 - Servidor reforzado</h1>

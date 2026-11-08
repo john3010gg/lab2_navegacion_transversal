@@ -46,6 +46,21 @@ Ejecute las pruebas sólo contra servidores propios, en `localhost` o en su máq
 3. `sudo systemctl daemon-reload && sudo systemctl enable --now lab2-servidor`
 4. Entregue al profesor `http://<IP>:8080/` y el script `pruebas.sh` (`./pruebas.sh <IP> 8080`).
 
+### Alternativa usada: WSL2 + túnel bore (sin nube)
+
+Si no tiene acceso a una VM en la nube, el servidor puede correr en WSL2 con systemd
+y publicarse con un túnel TCP de [bore](https://github.com/ekzhang/bore):
+
+```bash
+sudo bash wsl/instalar_wsl.sh      # compila, crea el entorno ficticio e instala
+                                   # lab2-servidor.service y wsl/lab2-tunel.service
+./pruebas.sh bore.pub 28080        # desde cualquier equipo
+curl -i --path-as-is http://bore.pub:28080/../secreto.txt   # -> 403
+```
+
+Se usa un túnel TCP (y no un proxy HTTP) para que los `../` lleguen sin normalizar.
+El tráfico no va cifrado y el equipo debe permanecer encendido. Resultado: `evidencia/resultados_remoto.txt`.
+
 No publique nunca el servidor original en Internet: cae con 11 conexiones vacías y filtra archivos.
 Como alternativa sin servidor, publique este material en un *fork* de GitHub para que el profesor lo compile.
 

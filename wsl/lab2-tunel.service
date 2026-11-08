@@ -1,0 +1,24 @@
+# /etc/systemd/system/lab2-tunel.service
+# Publica el puerto local 8080 en Internet mediante un túnel TCP de bore
+# (https://github.com/ekzhang/bore). Al ser TCP puro, las peticiones llegan
+# sin normalizar y pruebas.sh / curl --path-as-is funcionan igual que en local.
+# Nota: el tráfico viaja SIN cifrar (HTTP plano).
+[Unit]
+Description=Laboratorio 2 USB - Tunel bore hacia bore.pub
+After=network-online.target lab2-servidor.service
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/bore local 8080 --to bore.pub --port 28080
+Restart=always
+RestartSec=10
+# El túnel no necesita ningún privilegio
+DynamicUser=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
